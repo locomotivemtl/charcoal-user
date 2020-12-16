@@ -109,6 +109,24 @@ class Role extends AbstractModel
     }
 
     /**
+     * @return \Charcoal\Translator\Translation
+     */
+    public function name()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param \Charcoal\Translator\Translation $name
+     * @return Role
+     */
+    public function setName($name)
+    {
+        $this->name = $this->p('name')->parseVal($name);
+        return $this;
+    }
+
+    /**
      * @param string[]|string|null $allowed The allowed permissions for this role.
      * @throws InvalidArgumentException If the passed arguments is not an array, null, or a comma-separated string.
      * @return self
