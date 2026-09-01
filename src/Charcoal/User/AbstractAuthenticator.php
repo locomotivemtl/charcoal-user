@@ -387,6 +387,10 @@ abstract class AbstractAuthenticator implements
             return;
         }
 
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_regenerate_id(true);
+        }
+
         $this->updateUserSession($user);
 
         if ($remember) {
